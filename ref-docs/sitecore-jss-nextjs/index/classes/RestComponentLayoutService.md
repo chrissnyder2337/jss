@@ -36,7 +36,7 @@ Returns layoutData for one single rendered component
 
 #### Defined in
 
-sitecore-jss/types/editing/rest-component-layout-service.d.ts:53
+sitecore-jss/types/editing/rest-component-layout-service.d.ts:49
 
 ## Properties
 
@@ -161,7 +161,7 @@ sitecore-jss/types/layout/rest-layout-service.d.ts:83
 
 #### Defined in
 
-sitecore-jss/types/editing/rest-component-layout-service.d.ts:54
+sitecore-jss/types/editing/rest-component-layout-service.d.ts:50
 
 ***
 
@@ -250,7 +250,7 @@ sitecore-jss/types/layout/rest-layout-service.d.ts:77
 
 #### Defined in
 
-sitecore-jss/types/editing/rest-component-layout-service.d.ts:55
+sitecore-jss/types/editing/rest-component-layout-service.d.ts:51
 
 ***
 
