@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[packages/sitecore-jss-react/src/components/RichText.tsx:11](https://github.com/Sitecore/jss/blob/add785323e917338873098dc44b8af984c4e7c9a/packages/sitecore-jss-react/src/components/RichText.tsx#L11)
+[packages/sitecore-jss-react/src/components/RichText.tsx:11](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss-react/src/components/RichText.tsx#L11)
 
 ***
 
@@ -46,4 +46,4 @@ packages/sitecore-jss/types/layout/models.d.ts:125
 
 #### Defined in
 
-[packages/sitecore-jss-react/src/components/RichText.tsx:10](https://github.com/Sitecore/jss/blob/add785323e917338873098dc44b8af984c4e7c9a/packages/sitecore-jss-react/src/components/RichText.tsx#L10)
+[packages/sitecore-jss-react/src/components/RichText.tsx:10](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss-react/src/components/RichText.tsx#L10)

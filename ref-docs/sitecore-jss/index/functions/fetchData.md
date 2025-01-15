@@ -19,7 +19,7 @@
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `url` | `string` | the URL to request; may include query string |
-| `fetcher` | [`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<`T`\> | the fetcher to use to perform the request |
+| `fetcher` | [`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<`T`\> \| `NativeDataFetcherFunction`\<`T`\> | the fetcher to use to perform the request |
 | `params` | `ParsedUrlQueryInput` | the query string parameters to send with the request |
 
 ## Returns
@@ -28,4 +28,4 @@
 
 ## Defined in
 
-[packages/sitecore-jss/src/data-fetcher.ts:57](https://github.com/Sitecore/jss/blob/add785323e917338873098dc44b8af984c4e7c9a/packages/sitecore-jss/src/data-fetcher.ts#L57)
+[packages/sitecore-jss/src/data-fetcher.ts:45](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss/src/data-fetcher.ts#L45)

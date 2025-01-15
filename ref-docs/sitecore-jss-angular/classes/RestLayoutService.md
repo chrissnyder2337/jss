@@ -7,7 +7,7 @@
 # Class: RestLayoutService
 
 Fetch layout data using the Sitecore Layout Service REST API.
-Uses Axios as the default data fetcher (@see AxiosDataFetcher).
+Uses NativeDataFetcher as the default data fetcher (@see NativeDataFetcher).
 
 ## Extends
 
@@ -41,8 +41,9 @@ packages/sitecore-jss/types/layout/rest-layout-service.d.ts:55
 
 ### getDefaultFetcher()
 
-> `protected` **getDefaultFetcher**: \<`T`\>(`req`?, `res`?) => (`url`, `data`?) => `Promise`\<`AxiosResponse`\<`T`\>\>
+> `protected` **getDefaultFetcher**: \<`T`\>(`req`?, `res`?) => (`url`, `data`?) => `Promise`\<[`NativeDataFetcherResponse`](../interfaces/NativeDataFetcherResponse.md)\<`T`\>\>
 
+Returns a fetcher function pre-configured with headers from the incoming request.
 Provides default
 
 #### Type Parameters
@@ -69,25 +70,25 @@ default fetcher
 | Parameter | Type |
 | ------ | ------ |
 | `url` | `string` |
-| `data`? | `unknown` |
+| `data`? | `RequestInit` |
 
 ##### Returns
 
-`Promise`\<`AxiosResponse`\<`T`\>\>
+`Promise`\<[`NativeDataFetcherResponse`](../interfaces/NativeDataFetcherResponse.md)\<`T`\>\>
 
 #### See
 
-AxiosDataFetcher data fetcher
+NativeDataFetcher data fetcher
 
 #### Defined in
 
-packages/sitecore-jss/types/layout/rest-layout-service.d.ts:97
+packages/sitecore-jss/types/layout/rest-layout-service.d.ts:98
 
 ***
 
 ### getFetcher()
 
-> `protected` **getFetcher**: (`req`?, `res`?) => [`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\>
+> `protected` **getFetcher**: (`req`?, `res`?) => [`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\> \| `NativeDataFetcherFunction`\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\>
 
 #### Parameters
 
@@ -98,7 +99,7 @@ packages/sitecore-jss/types/layout/rest-layout-service.d.ts:97
 
 #### Returns
 
-[`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\>
+[`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\> \| `NativeDataFetcherFunction`\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\>
 
 #### Defined in
 
@@ -221,66 +222,53 @@ packages/sitecore-jss/types/layout/rest-layout-service.d.ts:90
 
 ### setupReqHeaders()
 
-> `protected` **setupReqHeaders**(`req`): (`reqConfig`) => `AxiosRequestConfig`
+> `protected` **setupReqHeaders**(`req`?): `Headers`
 
-Setup request headers
+Creates an HTTP `Headers` object populated with headers from the incoming request.
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `req` | `IncomingMessage` | Request instance |
+| `req`? | `IncomingMessage` | The incoming HTTP request, used to extract headers. |
 
 #### Returns
 
-`Function`
+`Headers`
 
-axios request config
-
-##### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `reqConfig` | `AxiosRequestConfig` |
-
-##### Returns
-
-`AxiosRequestConfig`
+- An instance of the `Headers` object populated with the extracted headers.
 
 #### Defined in
 
-packages/sitecore-jss/types/layout/rest-layout-service.d.ts:103
+packages/sitecore-jss/types/layout/rest-layout-service.d.ts:104
 
 ***
 
 ### setupResHeaders()
 
-> `protected` **setupResHeaders**(`res`): (`serverRes`) => `AxiosResponse`\<`any`\>
+> `protected` **setupResHeaders**\<`T`\>(`res`, `serverRes`): [`NativeDataFetcherResponse`](../interfaces/NativeDataFetcherResponse.md)\<`T`\>
 
 Setup response headers based on response from layout service
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `res` | `ServerResponse`\<`IncomingMessage`\> | Response instance |
+| `serverRes` | [`NativeDataFetcherResponse`](../interfaces/NativeDataFetcherResponse.md)\<`T`\> |  |
 
 #### Returns
 
-`Function`
+[`NativeDataFetcherResponse`](../interfaces/NativeDataFetcherResponse.md)\<`T`\>
 
 response
 
-##### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `serverRes` | `AxiosResponse`\<`any`\> |
-
-##### Returns
-
-`AxiosResponse`\<`any`\>
-
 #### Defined in
 
-packages/sitecore-jss/types/layout/rest-layout-service.d.ts:109
+packages/sitecore-jss/types/layout/rest-layout-service.d.ts:111

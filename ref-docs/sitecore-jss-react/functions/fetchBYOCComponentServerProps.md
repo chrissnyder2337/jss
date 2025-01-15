@@ -22,4 +22,4 @@ Fetches server component props required for server rendering, based on rendering
 
 ## Defined in
 
-[packages/sitecore-jss-react/src/components/BYOCComponent.tsx:178](https://github.com/Sitecore/jss/blob/add785323e917338873098dc44b8af984c4e7c9a/packages/sitecore-jss-react/src/components/BYOCComponent.tsx#L178)
+[packages/sitecore-jss-react/src/components/BYOCComponent.tsx:178](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss-react/src/components/BYOCComponent.tsx#L178)
