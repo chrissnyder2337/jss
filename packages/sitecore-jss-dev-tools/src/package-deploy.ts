@@ -1,12 +1,13 @@
 import chalk from 'chalk';
 import fs from 'fs';
-import https, { Agent as HttpsAgent } from 'https';
+import https from 'https';
 import path from 'path';
 import FormData from 'form-data';
-import axios, { AxiosRequestConfig, AxiosError } from 'axios';
 import { TLSSocket } from 'tls';
 import { digest, hmac } from './digest';
 import { ClientRequest, IncomingMessage } from 'http';
+import { ResponseError, NativeDataFetcher } from '@sitecore-jss/sitecore-jss';
+import { ProxyAgent } from 'undici';
 
 export interface PackageDeployOptions {
   packagePath: string;
@@ -16,6 +17,24 @@ export interface PackageDeployOptions {
   debugSecurity?: boolean;
   acceptCertificate?: string;
   proxy?: string;
+}
+
+/**
+ * Represents the response from the job status service.
+ */
+interface JobStatusResponse {
+  data: {
+    /**
+     * The current state of the job (e.g., 'InProgress', 'Finished', etc.).
+     */
+    state: string;
+
+    /**
+     * A list of messages related to the job's execution.
+     * Each message typically contains log entries or status details.
+     */
+    messages: string[];
+  };
 }
 
 // Node does not use system level trusted CAs. This causes issues because SIF likes to install
@@ -163,25 +182,20 @@ async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
   const factors = [options.appName, taskName, `${options.importServiceUrl}/status`];
   const mac = hmac(factors, options.secret);
 
-  const isHttps = options.importServiceUrl.startsWith('https');
-
   const requestBaseOptions = {
-    transport: isHttps ? getHttpsTransport(options) : undefined,
     headers: {
       'User-Agent': 'Sitecore/JSS-Import',
       'Cache-Control': 'no-cache',
       'X-JSS-Auth': mac,
     },
-    proxy: extractProxy(options.proxy),
-    maxRedirects: 0,
-    httpsAgent: isHttps
-      ? new HttpsAgent({
-          // we turn off normal CA cert validation when we are whitelisting a single cert thumbprint
-          rejectUnauthorized: options.acceptCertificate ? false : true,
-          // needed to allow whitelisting a cert thumbprint if a connection is reused
-          maxCachedSessions: options.acceptCertificate ? 0 : undefined,
-        })
-      : undefined,
+    dispatcher: new ProxyAgent({
+      uri: options.proxy || '',
+      maxRedirections: 0,
+      connect: {
+        rejectUnauthorized: options.acceptCertificate ? false : true,
+        maxCachedSessions: options.acceptCertificate ? 0 : undefined,
+      },
+    }),
   };
 
   if (options.debugSecurity) {
@@ -194,8 +208,8 @@ async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
      * Send job status request
      */
     function sendJobStatusRequest() {
-      axios
-        .get(
+      new NativeDataFetcher()
+        .get<JobStatusResponse>(
           `${options.importServiceUrl}/status?appName=${options.appName}&jobName=${taskName}&after=${logOffset}`,
           requestBaseOptions
         )
@@ -203,13 +217,12 @@ async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
           const body = response.data;
 
           try {
-            const { state, messages }: { state: string; messages: string[] } = body;
+            const { state, messages } = body.data;
 
             messages.forEach((entry) => {
               logOffset++;
 
               const entryBits = /^(\[([A-Z]+)\] )?(.+)/.exec(entry);
-
               let entryLevel = 'INFO';
               let message = entry;
 
@@ -243,7 +256,7 @@ async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
             reject(error);
           }
         })
-        .catch((error: AxiosError) => {
+        .catch((error: ResponseError) => {
           console.error(
             chalk.red(
               'Unexpected response from import status service. The import task is probably still running; check the Sitecore logs for details.'
@@ -305,39 +318,36 @@ export async function packageDeploy(options: PackageDeployOptions) {
   formData.append('path', fs.createReadStream(packageFile));
   formData.append('appName', options.appName);
 
-  const isHttps = options.importServiceUrl.startsWith('https');
-
   const requestBaseOptions = {
-    transport: isHttps ? getHttpsTransport(options) : undefined,
     headers: {
       'User-Agent': 'Sitecore/JSS-Import',
       'Cache-Control': 'no-cache',
       'X-JSS-Auth': hmac(factors, options.secret),
       ...formData.getHeaders(),
     },
-    proxy: extractProxy(options.proxy),
-    httpsAgent: isHttps
-      ? new HttpsAgent({
-          // we turn off normal CA cert validation when we are whitelisting a single cert thumbprint
-          rejectUnauthorized: options.acceptCertificate ? false : true,
-          // needed to allow whitelisting a cert thumbprint if a connection is reused
-          maxCachedSessions: options.acceptCertificate ? 0 : undefined,
-        })
-      : undefined,
-    maxRedirects: 0,
-  } as AxiosRequestConfig;
+    dispatcher: new ProxyAgent({
+      uri: options.proxy ? options.proxy : '',
+      maxRedirections: 0,
+      connect: {
+        // we turn off normal CA cert validation when we are whitelisting a single cert thumbprint
+        rejectUnauthorized: options.acceptCertificate ? false : true,
+        // needed to allow whitelisting a cert thumbprint if a connection is reused
+        maxCachedSessions: options.acceptCertificate ? 0 : undefined,
+      },
+    }),
+  };
 
   console.log(`Sending package ${packageFile} to ${options.importServiceUrl}...`);
   return new Promise<string>((resolve, reject) => {
-    axios
-      .post(options.importServiceUrl, formData, requestBaseOptions)
+    new NativeDataFetcher()
+      .post<string>(options.importServiceUrl, formData, requestBaseOptions)
       .then((response) => {
         const body = response.data;
 
         console.log(chalk.green(`Sitecore has accepted import task ${body}`));
         resolve(body);
       })
-      .catch((error: AxiosError) => {
+      .catch((error: ResponseError) => {
         console.error(chalk.red('Unexpected response from import service:'));
         if (error.response) {
           console.error(chalk.red(`Status message: ${error.response.statusText}`));
@@ -352,7 +362,7 @@ export async function packageDeploy(options: PackageDeployOptions) {
 }
 
 /**
- * Creates valid proxy object which fit to axios configuration
+ * Creates valid proxy object
  * @param {string} [proxy] proxy url
  */
 export function extractProxy(proxy?: string) {
@@ -373,9 +383,7 @@ export function extractProxy(proxy?: string) {
 }
 
 /**
- * Provides way to customize axios request adapter
- * in order to execute certificate pinning before request sent:
- * {@link https://github.com/axios/axios/issues/2808}
+ * Provides way to customize request adapter
  * @param {PackageDeployOptions} options
  */
 export function getHttpsTransport(options: PackageDeployOptions) {
