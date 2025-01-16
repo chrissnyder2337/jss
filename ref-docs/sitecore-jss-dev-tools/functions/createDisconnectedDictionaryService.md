@@ -47,4 +47,4 @@
 
 ## Defined in
 
-[sitecore-jss-dev-tools/src/disconnected-server/dictionary-service.ts:42](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss-dev-tools/src/disconnected-server/dictionary-service.ts#L42)
+[sitecore-jss-dev-tools/src/disconnected-server/dictionary-service.ts:42](https://github.com/Sitecore/jss/blob/985b48123d22355eab461b2ffafe781c2cbca1ac/packages/sitecore-jss-dev-tools/src/disconnected-server/dictionary-service.ts#L42)

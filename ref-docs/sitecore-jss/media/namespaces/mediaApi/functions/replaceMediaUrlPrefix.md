@@ -26,4 +26,4 @@ The URL with the media URL prefix replaced
 
 ## Defined in
 
-[packages/sitecore-jss/src/media/media-api.ts:57](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss/src/media/media-api.ts#L57)
+[packages/sitecore-jss/src/media/media-api.ts:57](https://github.com/Sitecore/jss/blob/985b48123d22355eab461b2ffafe781c2cbca1ac/packages/sitecore-jss/src/media/media-api.ts#L57)

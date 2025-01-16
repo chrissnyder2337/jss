@@ -22,4 +22,4 @@ Event contents to be sent when component library page is ready and rendered
 
 ## Defined in
 
-[packages/sitecore-jss/src/editing/utils.ts:17](https://github.com/Sitecore/jss/blob/8a4b494b94688cf3e3919ca9b89762334d163535/packages/sitecore-jss/src/editing/utils.ts#L17)
+[packages/sitecore-jss/src/editing/utils.ts:17](https://github.com/Sitecore/jss/blob/985b48123d22355eab461b2ffafe781c2cbca1ac/packages/sitecore-jss/src/editing/utils.ts#L17)
