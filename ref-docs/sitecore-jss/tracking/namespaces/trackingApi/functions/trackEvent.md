@@ -25,4 +25,4 @@ void
 
 ## Defined in
 
-[packages/sitecore-jss/src/tracking/trackingApi.ts:62](https://github.com/Sitecore/jss/blob/b4728bd62f468f88cc20c503d593996b480fad47/packages/sitecore-jss/src/tracking/trackingApi.ts#L62)
+[packages/sitecore-jss/src/tracking/trackingApi.ts:62](https://github.com/Sitecore/jss/blob/dee092415f12bcdad68eb71976eb7c8871273c91/packages/sitecore-jss/src/tracking/trackingApi.ts#L62)
