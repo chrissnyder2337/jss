@@ -24,4 +24,4 @@ If `href` match with `internalLinkMatcher` regexp, then it's internal link and N
 
 ## Defined in
 
-[sitecore-jss-nextjs/src/components/Link.tsx:12](https://github.com/Sitecore/jss/blob/dee092415f12bcdad68eb71976eb7c8871273c91/packages/sitecore-jss-nextjs/src/components/Link.tsx#L12)
+[sitecore-jss-nextjs/src/components/Link.tsx:12](https://github.com/Sitecore/jss/blob/5339c2cb4c0027629b555d24ea7cc930965853fe/packages/sitecore-jss-nextjs/src/components/Link.tsx#L12)

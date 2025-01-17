@@ -40,4 +40,4 @@ The JSS application name
 
 ## Defined in
 
-[packages/sitecore-jss/src/i18n/rest-dictionary-service.ts:14](https://github.com/Sitecore/jss/blob/dee092415f12bcdad68eb71976eb7c8871273c91/packages/sitecore-jss/src/i18n/rest-dictionary-service.ts#L14)
+[packages/sitecore-jss/src/i18n/rest-dictionary-service.ts:14](https://github.com/Sitecore/jss/blob/5339c2cb4c0027629b555d24ea7cc930965853fe/packages/sitecore-jss/src/i18n/rest-dictionary-service.ts#L14)
