@@ -11,17 +11,15 @@ Our versioning strategy is as follows:
 
 ## Unreleased
 
-### 🎉 New Features & Improvements
-
-* `[nextjs][sitecore-jss-nextjs]` Support for Component Library feature in XMCloud ([#1987](https://github.com/Sitecore/jss/pull/1987)[#2000](https://github.com/Sitecore/jss/pull/2000)[#2002](https://github.com/Sitecore/jss/pull/2002)[#2005](https://github.com/Sitecore/jss/pull/2005))
+## 22.4.0
 
 ### 🐛 Bug Fixes
 
-* `[templates/nextjs-sxa]` Fixed font-awesome import issue in custom workspace configuration ([#1998](https://github.com/Sitecore/jss/pull/1998))
-* `[sitecore-jss-nextjs]` Fixed handling of ? inside square brackets [] in regex patterns to prevent incorrect escaping ([#1999](https://github.com/Sitecore/jss/pull/1999))
-* `[sitecore-jss-nextjs]` Improve performance for redirect middleware ([#2003](https://github.com/Sitecore/jss/pull/2003))
-* `[templates/nextjs]` `[templates/nextjs-sxa]` Fixed condition of DISABLE_FETCH_SSG ([#2007](https://github.com/Sitecore/jss/pull/2007))
-* `[sitecore-jss]` Fixed incorrect escaping of question marks in negative lookahead patterns in `escapeNonSpecialQuestionMarks` function ([#2014](https://github.com/Sitecore/jss/pull/2014))
+* `[templates/nextjs-sxa]` Fix Font Awesome imports in custom workspace. ([#1998](https://github.com/Sitecore/jss/pull/1998))
+* `[sitecore-jss-nextjs]` Improved handling of Regex Operators in logic for cases Like [/]? to prevent incorrect escaping. ([#1999](https://github.com/Sitecore/jss/pull/1999))
+* `[sitecore-jss-nextjs]` Improve performance for redirect middleware. ([#2003](https://github.com/Sitecore/jss/pull/2003))
+* `[templates/nextjs]` `[templates/nextjs-sxa]` Fix condition handling for DISABLE_SSG_FETCH variable.([#2007](https://github.com/Sitecore/jss/pull/2007))
+* `[sitecore-jss]` Fix incorrect escaping of question marks in negative lookahead patterns. ([#2014](https://github.com/Sitecore/jss/pull/2014))
 
 
 ### 🛠 Breaking Change
