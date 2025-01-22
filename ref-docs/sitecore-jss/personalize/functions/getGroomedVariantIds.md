@@ -24,4 +24,4 @@ object with variant IDs sorted
 
 ## Defined in
 
-[packages/sitecore-jss/src/personalize/utils.ts:43](https://github.com/Sitecore/jss/blob/49e56a9efb1742351f2d61235b0c8a0afb80e052/packages/sitecore-jss/src/personalize/utils.ts#L43)
+[packages/sitecore-jss/src/personalize/utils.ts:43](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss/src/personalize/utils.ts#L43)

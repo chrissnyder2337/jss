@@ -11,7 +11,7 @@
 Escapes non-special "?" characters in a string or regex.
 - For regular strings, it escapes all unescaped "?" characters by adding a backslash (`\`).
 - For regex patterns (strings enclosed in `/.../`), it analyzes each "?" to determine if it has special meaning
-  (e.g., `?` in `(abc)?`, `.*?`) or is just a literal character. Only literal "?" characters are escaped.
+  (e.g., `?` in `(abc)?`, `.*?`, `(?!...)`) or is just a literal character. Only literal "?" characters are escaped.
 
 ## Parameters
 
@@ -27,4 +27,4 @@ Escapes non-special "?" characters in a string or regex.
 
 ## Defined in
 
-[packages/sitecore-jss/src/utils/utils.ts:204](https://github.com/Sitecore/jss/blob/49e56a9efb1742351f2d61235b0c8a0afb80e052/packages/sitecore-jss/src/utils/utils.ts#L204)
+[packages/sitecore-jss/src/utils/utils.ts:204](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss/src/utils/utils.ts#L204)
