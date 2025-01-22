@@ -20,4 +20,4 @@
 
 ## Defined in
 
-[sitecore-jss-dev-tools/src/setup/jss-config.ts:4](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss-dev-tools/src/setup/jss-config.ts#L4)
+[sitecore-jss-dev-tools/src/setup/jss-config.ts:4](https://github.com/Sitecore/jss/blob/9fded091a348a586c285b62bab7a9afba0a841bc/packages/sitecore-jss-dev-tools/src/setup/jss-config.ts#L4)
