@@ -304,7 +304,7 @@ describe('package-deploy', () => {
 
   describe('setProxy', () => {
     const reqOptions: RequestOptions = {};
-    it('should set hostname, port, protocol, and path for a valid HTTP proxy', () => {
+    it('should set hostname, port, protocol, header, and path for a valid HTTP proxy', () => {
       const proxy = 'http://proxy.example.com:8080';
       const targetUrl = 'https://targetsite.com/resource';
 
@@ -315,6 +315,9 @@ describe('package-deploy', () => {
         port: '8080',
         protocol: 'http:',
         path: targetUrl,
+        headers: {
+          Host: new URL(targetUrl).hostname,
+        },
       });
     });
 
