@@ -27,4 +27,4 @@ Editing router
 
 ## Defined in
 
-[sitecore-jss-proxy/src/middleware/editing/index.ts:104](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-proxy/src/middleware/editing/index.ts#L104)
+[sitecore-jss-proxy/src/middleware/editing/index.ts:104](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-proxy/src/middleware/editing/index.ts#L104)

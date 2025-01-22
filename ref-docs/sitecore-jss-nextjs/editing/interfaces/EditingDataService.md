@@ -30,7 +30,7 @@ The [EditingData](../type-aliases/EditingData.md)
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-service.ts:38](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L38)
+[sitecore-jss-nextjs/src/editing/editing-data-service.ts:38](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L38)
 
 ***
 
@@ -56,4 +56,4 @@ The [EditingPreviewData](EditingPreviewData.md) containing the information to us
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-service.ts:28](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L28)
+[sitecore-jss-nextjs/src/editing/editing-data-service.ts:28](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L28)

@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[packages/sitecore-jss-angular/src/components/rendering-field.ts:22](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-angular/src/components/rendering-field.ts#L22)
+[packages/sitecore-jss-angular/src/components/rendering-field.ts:22](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-angular/src/components/rendering-field.ts#L22)
 
 ***
 
@@ -32,4 +32,4 @@
 
 #### Defined in
 
-[packages/sitecore-jss-angular/src/components/rendering-field.ts:23](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-angular/src/components/rendering-field.ts#L23)
+[packages/sitecore-jss-angular/src/components/rendering-field.ts:23](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-angular/src/components/rendering-field.ts#L23)

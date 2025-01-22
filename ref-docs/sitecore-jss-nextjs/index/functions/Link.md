@@ -20,4 +20,4 @@
 
 ## Defined in
 
-[sitecore-jss-nextjs/src/components/Link.tsx:25](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/components/Link.tsx#L25)
+[sitecore-jss-nextjs/src/components/Link.tsx:25](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/components/Link.tsx#L25)

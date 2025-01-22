@@ -20,4 +20,4 @@
 
 ## Defined in
 
-[sitecore-jss-dev-tools/src/disconnected-server/create-default-disconnected-server.ts:99](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-dev-tools/src/disconnected-server/create-default-disconnected-server.ts#L99)
+[sitecore-jss-dev-tools/src/disconnected-server/create-default-disconnected-server.ts:99](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-dev-tools/src/disconnected-server/create-default-disconnected-server.ts#L99)

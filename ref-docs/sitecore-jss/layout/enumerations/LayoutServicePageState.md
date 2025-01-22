@@ -17,7 +17,7 @@ library mode would render a single component
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:16](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss/src/layout/models.ts#L16)
+[packages/sitecore-jss/src/layout/models.ts:16](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss/src/layout/models.ts#L16)
 
 ***
 
@@ -27,7 +27,7 @@ library mode would render a single component
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:17](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss/src/layout/models.ts#L17)
+[packages/sitecore-jss/src/layout/models.ts:17](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss/src/layout/models.ts#L17)
 
 ***
 
@@ -37,4 +37,4 @@ library mode would render a single component
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:15](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss/src/layout/models.ts#L15)
+[packages/sitecore-jss/src/layout/models.ts:15](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss/src/layout/models.ts#L15)

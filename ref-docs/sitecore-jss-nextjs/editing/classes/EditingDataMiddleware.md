@@ -27,7 +27,7 @@ which is required for Sitecore editing support.
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-middleware.ts:41](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-middleware.ts#L41)
+[sitecore-jss-nextjs/src/editing/editing-data-middleware.ts:41](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-middleware.ts#L41)
 
 ## Methods
 
@@ -56,4 +56,4 @@ route handler
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-middleware.ts:50](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-middleware.ts#L50)
+[sitecore-jss-nextjs/src/editing/editing-data-middleware.ts:50](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-middleware.ts#L50)

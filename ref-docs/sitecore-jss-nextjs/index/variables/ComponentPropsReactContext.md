@@ -12,4 +12,4 @@ Component props context which we are using in order to store data fetched on com
 
 ## Defined in
 
-[sitecore-jss-nextjs/src/components/ComponentPropsContext.tsx:7](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/components/ComponentPropsContext.tsx#L7)
+[sitecore-jss-nextjs/src/components/ComponentPropsContext.tsx:7](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/components/ComponentPropsContext.tsx#L7)

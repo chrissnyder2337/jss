@@ -34,7 +34,7 @@ EditingDataCache
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-cache.ts:25](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-cache.ts#L25)
+[sitecore-jss-nextjs/src/editing/editing-data-cache.ts:25](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-cache.ts#L25)
 
 ## Methods
 
@@ -58,7 +58,7 @@ EditingDataCache
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-cache.ts:41](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-cache.ts#L41)
+[sitecore-jss-nextjs/src/editing/editing-data-cache.ts:41](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-cache.ts#L41)
 
 ***
 
@@ -83,4 +83,4 @@ EditingDataCache
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-cache.ts:30](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-data-cache.ts#L30)
+[sitecore-jss-nextjs/src/editing/editing-data-cache.ts:30](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-data-cache.ts#L30)

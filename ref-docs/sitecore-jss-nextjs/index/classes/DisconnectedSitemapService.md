@@ -28,7 +28,7 @@ You can use `sitecore/manifest/sitecore-import.json` as manifest
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts:11](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts#L11)
+[sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts:11](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts#L11)
 
 ## Methods
 
@@ -45,4 +45,4 @@ Since i18n is not supported, the output paths will not include a `locale` proper
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts:17](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts#L17)
+[sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts:17](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/services/disconnected-sitemap-service.ts#L17)

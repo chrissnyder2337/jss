@@ -35,7 +35,7 @@ which is required for Sitecore editing support.
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-render-middleware.ts:483](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-render-middleware.ts#L483)
+[sitecore-jss-nextjs/src/editing/editing-render-middleware.ts:483](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-render-middleware.ts#L483)
 
 ## Properties
 
@@ -47,7 +47,7 @@ Editing render middleware config
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-render-middleware.ts:483](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-render-middleware.ts#L483)
+[sitecore-jss-nextjs/src/editing/editing-render-middleware.ts:483](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-render-middleware.ts#L483)
 
 ## Methods
 
@@ -76,7 +76,7 @@ route handler
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-render-middleware.ts:491](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/editing-render-middleware.ts#L491)
+[sitecore-jss-nextjs/src/editing/editing-render-middleware.ts:491](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/editing-render-middleware.ts#L491)
 
 ***
 
@@ -104,7 +104,7 @@ Object of approved headers
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/render-middleware.ts:39](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/render-middleware.ts#L39)
+[sitecore-jss-nextjs/src/editing/render-middleware.ts:39](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/render-middleware.ts#L39)
 
 ***
 
@@ -132,4 +132,4 @@ Object of approved query parameters
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/render-middleware.ts:17](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/editing/render-middleware.ts#L17)
+[sitecore-jss-nextjs/src/editing/render-middleware.ts:17](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/editing/render-middleware.ts#L17)

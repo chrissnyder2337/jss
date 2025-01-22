@@ -38,4 +38,4 @@ function for component level data fetching in SSG mode
 
 ## Defined in
 
-[sitecore-jss-nextjs/src/sharedTypes/module-factory.ts:7](https://github.com/Sitecore/jss/blob/14c94b27afbe004fefaf1cab8e080470a80ff3f4/packages/sitecore-jss-nextjs/src/sharedTypes/module-factory.ts#L7)
+[sitecore-jss-nextjs/src/sharedTypes/module-factory.ts:7](https://github.com/Sitecore/jss/blob/d913ed54238504581de52043eb1a0198f8a99bdf/packages/sitecore-jss-nextjs/src/sharedTypes/module-factory.ts#L7)
