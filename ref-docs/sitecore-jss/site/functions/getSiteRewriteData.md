@@ -25,4 +25,4 @@ the site data from the rewrite
 
 ## Defined in
 
-[packages/sitecore-jss/src/site/utils.ts:25](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/site/utils.ts#L25)
+[packages/sitecore-jss/src/site/utils.ts:25](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/site/utils.ts#L25)
