@@ -12,4 +12,4 @@ Field value data on a component
 
 ## Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:123](https://github.com/Sitecore/jss/blob/5339c2cb4c0027629b555d24ea7cc930965853fe/packages/sitecore-jss/src/layout/models.ts#L123)
+[packages/sitecore-jss/src/layout/models.ts:123](https://github.com/Sitecore/jss/blob/49e56a9efb1742351f2d61235b0c8a0afb80e052/packages/sitecore-jss/src/layout/models.ts#L123)
