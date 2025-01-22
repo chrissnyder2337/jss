@@ -22,7 +22,7 @@ Definition of a component instance within a placeholder on a route
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:100](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L100)
+[packages/sitecore-jss/src/layout/models.ts:98](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L98)
 
 ***
 
@@ -32,7 +32,7 @@ Definition of a component instance within a placeholder on a route
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:101](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L101)
+[packages/sitecore-jss/src/layout/models.ts:99](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L99)
 
 ***
 
@@ -42,7 +42,7 @@ Definition of a component instance within a placeholder on a route
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:104](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L104)
+[packages/sitecore-jss/src/layout/models.ts:102](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L102)
 
 ***
 
@@ -52,7 +52,7 @@ Definition of a component instance within a placeholder on a route
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:105](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L105)
+[packages/sitecore-jss/src/layout/models.ts:103](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L103)
 
 ***
 
@@ -62,7 +62,7 @@ Definition of a component instance within a placeholder on a route
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:103](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L103)
+[packages/sitecore-jss/src/layout/models.ts:101](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L101)
 
 ***
 
@@ -72,4 +72,4 @@ Definition of a component instance within a placeholder on a route
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:102](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L102)
+[packages/sitecore-jss/src/layout/models.ts:100](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L100)

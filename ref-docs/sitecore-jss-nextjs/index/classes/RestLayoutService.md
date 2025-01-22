@@ -13,10 +13,6 @@ Uses NativeDataFetcher as the default data fetcher (@see NativeDataFetcher).
 
 - `LayoutServiceBase`
 
-## Extended by
-
-- [`RestComponentLayoutService`](RestComponentLayoutService.md)
-
 ## Constructors
 
 ### new RestLayoutService()
@@ -86,28 +82,7 @@ NativeDataFetcher data fetcher
 
 #### Defined in
 
-sitecore-jss/types/layout/rest-layout-service.d.ts:98
-
-***
-
-### getFetcher()
-
-> `protected` **getFetcher**: (`req`?, `res`?) => [`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\> \| `NativeDataFetcherFunction`\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\>
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `req`? | `IncomingMessage` |
-| `res`? | `ServerResponse`\<`IncomingMessage`\> |
-
-#### Returns
-
-[`HttpDataFetcher`](../type-aliases/HttpDataFetcher.md)\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\> \| `NativeDataFetcherFunction`\<[`LayoutServiceData`](../interfaces/LayoutServiceData.md)\>
-
-#### Defined in
-
-sitecore-jss/types/layout/rest-layout-service.d.ts:84
+sitecore-jss/types/layout/rest-layout-service.d.ts:97
 
 ***
 
@@ -210,7 +185,7 @@ Resolves layout service url
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `apiType` | `"render"` \| `"placeholder"` \| `"component"` | which layout service API to call ('render' or 'placeholder') |
+| `apiType` | `"render"` \| `"placeholder"` | which layout service API to call ('render' or 'placeholder') |
 
 #### Returns
 
@@ -220,7 +195,7 @@ the layout service url
 
 #### Defined in
 
-sitecore-jss/types/layout/rest-layout-service.d.ts:90
+sitecore-jss/types/layout/rest-layout-service.d.ts:89
 
 ***
 
@@ -244,7 +219,7 @@ Creates an HTTP `Headers` object populated with headers from the incoming reques
 
 #### Defined in
 
-sitecore-jss/types/layout/rest-layout-service.d.ts:104
+sitecore-jss/types/layout/rest-layout-service.d.ts:103
 
 ***
 
@@ -275,4 +250,4 @@ response
 
 #### Defined in
 
-sitecore-jss/types/layout/rest-layout-service.d.ts:111
+sitecore-jss/types/layout/rest-layout-service.d.ts:110

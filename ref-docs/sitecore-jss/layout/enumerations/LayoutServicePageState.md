@@ -7,7 +7,6 @@
 # Enumeration: LayoutServicePageState
 
 Layout Service page state enum
-library mode would render a single component
 
 ## Enumeration Members
 
@@ -17,7 +16,7 @@ library mode would render a single component
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:16](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L16)
+[packages/sitecore-jss/src/layout/models.ts:15](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L15)
 
 ***
 
@@ -27,7 +26,7 @@ library mode would render a single component
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:17](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L17)
+[packages/sitecore-jss/src/layout/models.ts:16](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L16)
 
 ***
 
@@ -37,4 +36,4 @@ library mode would render a single component
 
 #### Defined in
 
-[packages/sitecore-jss/src/layout/models.ts:15](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/layout/models.ts#L15)
+[packages/sitecore-jss/src/layout/models.ts:14](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/layout/models.ts#L14)

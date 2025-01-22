@@ -26,4 +26,4 @@ The schema of data returned in response to robots.txt request
 
 ## Defined in
 
-[packages/sitecore-jss/src/site/graphql-robots-service.ts:32](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss/src/site/graphql-robots-service.ts#L32)
+[packages/sitecore-jss/src/site/graphql-robots-service.ts:32](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss/src/site/graphql-robots-service.ts#L32)

@@ -26,7 +26,7 @@ Registers a statically loaded component
 
 #### Defined in
 
-[packages/sitecore-jss-angular/src/services/placeholder.token.ts:12](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L12)
+[packages/sitecore-jss-angular/src/services/placeholder.token.ts:12](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L12)
 
 ***
 
@@ -36,7 +36,7 @@ Registers a statically loaded component
 
 #### Defined in
 
-[packages/sitecore-jss-angular/src/services/placeholder.token.ts:9](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L9)
+[packages/sitecore-jss-angular/src/services/placeholder.token.ts:9](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L9)
 
 ***
 
@@ -50,7 +50,7 @@ Registers a statically loaded component
 
 #### Defined in
 
-[packages/sitecore-jss-angular/src/services/placeholder.token.ts:17](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L17)
+[packages/sitecore-jss-angular/src/services/placeholder.token.ts:17](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L17)
 
 ***
 
@@ -60,4 +60,4 @@ Registers a statically loaded component
 
 #### Defined in
 
-[packages/sitecore-jss-angular/src/services/placeholder.token.ts:10](https://github.com/Sitecore/jss/blob/f73438462e859a2e4056c173073deed1d51387b8/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L10)
+[packages/sitecore-jss-angular/src/services/placeholder.token.ts:10](https://github.com/Sitecore/jss/blob/5b4314b712f0ff68b2830199db3aeba34caef55e/packages/sitecore-jss-angular/src/services/placeholder.token.ts#L10)

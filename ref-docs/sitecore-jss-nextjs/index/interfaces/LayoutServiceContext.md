@@ -20,7 +20,7 @@ Shape of context data from the Sitecore Layout Service
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:43
+sitecore-jss/types/layout/models.d.ts:41
 
 ***
 
@@ -30,7 +30,7 @@ sitecore-jss/types/layout/models.d.ts:43
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:42
+sitecore-jss/types/layout/models.d.ts:40
 
 ***
 
@@ -40,7 +40,7 @@ sitecore-jss/types/layout/models.d.ts:42
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:41
+sitecore-jss/types/layout/models.d.ts:39
 
 ***
 
@@ -50,7 +50,7 @@ sitecore-jss/types/layout/models.d.ts:41
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:34
+sitecore-jss/types/layout/models.d.ts:33
 
 ***
 
@@ -60,7 +60,7 @@ sitecore-jss/types/layout/models.d.ts:34
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:33
+sitecore-jss/types/layout/models.d.ts:32
 
 ***
 
@@ -70,7 +70,7 @@ sitecore-jss/types/layout/models.d.ts:33
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:32
+sitecore-jss/types/layout/models.d.ts:31
 
 ***
 
@@ -80,17 +80,7 @@ sitecore-jss/types/layout/models.d.ts:32
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:35
-
-***
-
-### renderingType?
-
-> `optional` **renderingType**: [`Component`](../../editing/enumerations/RenderingType.md#component)
-
-#### Defined in
-
-sitecore-jss/types/layout/models.d.ts:40
+sitecore-jss/types/layout/models.d.ts:34
 
 ***
 
@@ -104,7 +94,7 @@ sitecore-jss/types/layout/models.d.ts:40
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:37
+sitecore-jss/types/layout/models.d.ts:36
 
 ***
 
@@ -114,4 +104,4 @@ sitecore-jss/types/layout/models.d.ts:37
 
 #### Defined in
 
-sitecore-jss/types/layout/models.d.ts:36
+sitecore-jss/types/layout/models.d.ts:35
