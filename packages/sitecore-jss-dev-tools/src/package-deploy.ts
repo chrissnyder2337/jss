@@ -1,13 +1,12 @@
 import chalk from 'chalk';
 import fs from 'fs';
-import https from 'https';
+import https, { RequestOptions } from 'https';
+import http from 'http';
 import path from 'path';
 import FormData from 'form-data';
 import { TLSSocket } from 'tls';
 import { digest, hmac } from './digest';
-import { ClientRequest, IncomingMessage } from 'http';
-import { ResponseError, NativeDataFetcher } from '@sitecore-jss/sitecore-jss';
-import { ProxyAgent } from 'undici';
+import { ClientRequest } from 'http';
 
 export interface PackageDeployOptions {
   packagePath: string;
@@ -17,24 +16,6 @@ export interface PackageDeployOptions {
   debugSecurity?: boolean;
   acceptCertificate?: string;
   proxy?: string;
-}
-
-/**
- * Represents the response from the job status service.
- */
-interface JobStatusResponse {
-  data: {
-    /**
-     * The current state of the job (e.g., 'InProgress', 'Finished', etc.).
-     */
-    state: string;
-
-    /**
-     * A list of messages related to the job's execution.
-     * Each message typically contains log entries or status details.
-     */
-    messages: string[];
-  };
 }
 
 // Node does not use system level trusted CAs. This causes issues because SIF likes to install
@@ -174,7 +155,7 @@ export function logJobStatus({
  * @param {PackageDeployOptions} options
  * @param {string} taskName
  */
-async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
+export async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
   let logOffset = 0;
   const errors: string[] = [];
   const warnings: string[] = [];
@@ -182,20 +163,31 @@ async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
   const factors = [options.appName, taskName, `${options.importServiceUrl}/status`];
   const mac = hmac(factors, options.secret);
 
-  const requestBaseOptions = {
+  const url = new URL(
+    `${options.importServiceUrl}/status?appName=${options.appName}&jobName=${taskName}&after=${logOffset}`
+  );
+
+  const isHttps = options.importServiceUrl.startsWith('https');
+  const client = isHttps ? https : http;
+
+  const reqOptions: RequestOptions = {
     headers: {
       'User-Agent': 'Sitecore/JSS-Import',
       'Cache-Control': 'no-cache',
       'X-JSS-Auth': mac,
     },
-    dispatcher: new ProxyAgent({
-      uri: options.proxy || '',
-      maxRedirections: 0,
-      connect: {
-        rejectUnauthorized: options.acceptCertificate ? false : true,
-        maxCachedSessions: options.acceptCertificate ? 0 : undefined,
-      },
-    }),
+    method: 'GET',
+    hostname: url.hostname,
+    protocol: url.protocol,
+    path: url.pathname + url.search,
+    agent: isHttps
+      ? new https.Agent({
+          // we turn off normal CA cert validation when we are whitelisting a single cert thumbprint
+          rejectUnauthorized: options.acceptCertificate ? false : true,
+          // needed to allow whitelisting a cert thumbprint if a connection is reused
+          maxCachedSessions: options.acceptCertificate ? 0 : undefined,
+        })
+      : undefined,
   };
 
   if (options.debugSecurity) {
@@ -203,78 +195,105 @@ async function watchJobStatus(options: PackageDeployOptions, taskName: string) {
     console.log(`Deployment status HMAC: ${mac}`);
   }
 
-  return new Promise((resolve, reject) => {
-    /**
-     * Send job status request
-     */
-    function sendJobStatusRequest() {
-      new NativeDataFetcher()
-        .get<JobStatusResponse>(
-          `${options.importServiceUrl}/status?appName=${options.appName}&jobName=${taskName}&after=${logOffset}`,
-          requestBaseOptions
-        )
-        .then((response) => {
-          const body = response.data;
+  if (options.proxy) {
+    setProxy(reqOptions, options.proxy, options.importServiceUrl);
+  }
 
-          try {
-            const { state, messages } = body.data;
+  const req = client.request(reqOptions);
 
-            messages.forEach((entry) => {
-              logOffset++;
+  if (isHttps) {
+    applyCertPinning(req, options);
+  }
 
-              const entryBits = /^(\[([A-Z]+)\] )?(.+)/.exec(entry);
-              let entryLevel = 'INFO';
-              let message = entry;
+  let responseData = '';
 
-              if (entryBits && entryBits[2]) {
-                entryLevel = entryBits[2];
-                // 3 = '[] ' in say [INFO] My log message
-                // we're not using the capture group as the message might be multi-line
-                message = entry.substring(entryLevel.length + 3);
-              }
+  req.on('response', (res) => {
+    if (res.statusCode !== 200) {
+      let errorData = '';
 
-              if (message.startsWith('[JSS] - ')) {
-                message = message.substring(8);
-              }
+      res.on('data', (chunk) => {
+        errorData += chunk;
+      });
 
-              logJobStatus({ message, entryLevel, warnings, errors });
-            });
+      res.on('end', () => {
+        console.error(
+          chalk.red(
+            'Unexpected response from import status service. The import task is probably still running; check the Sitecore logs for details.'
+          )
+        );
+        console.error(chalk.red(`Status message: ${res.statusMessage}`));
+        console.error(chalk.red(`Status: ${res.statusCode}`));
+        process.exit(1);
+      });
 
-            if (state === 'Finished') {
-              finishWatchJobStatusTask({ warnings, errors, resolve, reject });
-
-              return;
-            }
-
-            setTimeout(sendJobStatusRequest, 1000);
-          } catch (error) {
-            console.error(
-              chalk.red(`Unexpected error processing reply from import status service: ${error}`)
-            );
-            console.error(chalk.red(`Response: ${body}`));
-            console.error(chalk.red('Consult the Sitecore logs for details.'));
-            reject(error);
-          }
-        })
-        .catch((error: ResponseError) => {
-          console.error(
-            chalk.red(
-              'Unexpected response from import status service. The import task is probably still running; check the Sitecore logs for details.'
-            )
-          );
-          if (error.response) {
-            console.error(chalk.red(`Status message: ${error.response.statusText}`));
-            console.error(chalk.red(`Status: ${error.response.status}`));
-          } else {
-            console.error(chalk.red(error.message));
-          }
-
-          reject();
-        });
+      return;
     }
 
-    setTimeout(sendJobStatusRequest, 1000);
+    res.on('error', (err) => {
+      console.error(
+        chalk.red(
+          'Unexpected response from import status service. The import task is probably still running; check the Sitecore logs for details.'
+        )
+      );
+      console.error(chalk.red(`Status message: ${err.message}`));
+      console.error(chalk.red(`Status: ${res.statusCode}`));
+      process.exit(1);
+    });
+
+    res.on('data', (chunk) => {
+      responseData += chunk;
+    });
+
+    res.on('end', () => {
+      try {
+        const body = JSON.parse(responseData);
+        const { state, messages }: { state: string; messages: string[] } = body;
+
+        messages.forEach((entry) => {
+          logOffset++;
+
+          const entryBits = /^(\[([A-Z]+)\] )?(.+)/.exec(entry);
+
+          let entryLevel = 'INFO';
+          let message = entry;
+
+          if (entryBits && entryBits[2]) {
+            entryLevel = entryBits[2];
+            // 3 = '[] ' in say [INFO] My log message
+            // we're not using the capture group as the message might be multi-line
+            message = entry.substring(entryLevel.length + 3);
+          }
+
+          if (message.startsWith('[JSS] - ')) {
+            message = message.substring(8);
+          }
+
+          logJobStatus({ message, entryLevel, warnings, errors });
+        });
+
+        if (state === 'Finished') {
+          finishWatchJobStatusTask({ warnings, errors, resolve: () => {}, reject: () => {} });
+          return;
+        }
+
+        setTimeout(() => watchJobStatus(options, taskName), 1000);
+      } catch (error) {
+        console.error(
+          chalk.red(`Unexpected error processing reply from import status service: ${error}`)
+        );
+        console.error(chalk.red(`Response: ${responseData}`));
+        console.error(chalk.red('Consult the Sitecore logs for details.'));
+        process.exit(1);
+      }
+    });
   });
+
+  req.on('error', (err) => {
+    console.error(chalk.red(`Request error: ${err.message}`));
+    process.exit(1);
+  });
+
+  req.end();
 }
 
 /**
@@ -293,7 +312,7 @@ export async function packageDeploy(options: PackageDeployOptions) {
     );
   }
 
-  let packageFile = null;
+  let packageFile = '';
   fs.readdirSync(options.packagePath).forEach((file) => {
     if (file.startsWith(options.appName) && file.endsWith('.manifest.zip')) {
       packageFile = path.join(options.packagePath, file);
@@ -315,67 +334,112 @@ export async function packageDeploy(options: PackageDeployOptions) {
 
   const formData = new FormData();
 
-  formData.append('path', fs.createReadStream(packageFile));
-  formData.append('appName', options.appName);
+  const fileStream = fs.createReadStream(packageFile);
 
-  const requestBaseOptions = {
+  const url = new URL(options.importServiceUrl);
+
+  formData.append('appName', options.appName);
+  formData.append('path', fileStream);
+
+  const isHttps = options.importServiceUrl.startsWith('https');
+
+  const client = isHttps ? https : http;
+
+  const reqOptions: RequestOptions = {
     headers: {
       'User-Agent': 'Sitecore/JSS-Import',
       'Cache-Control': 'no-cache',
       'X-JSS-Auth': hmac(factors, options.secret),
       ...formData.getHeaders(),
     },
-    dispatcher: new ProxyAgent({
-      uri: options.proxy ? options.proxy : '',
-      maxRedirections: 0,
-      connect: {
-        // we turn off normal CA cert validation when we are whitelisting a single cert thumbprint
-        rejectUnauthorized: options.acceptCertificate ? false : true,
-        // needed to allow whitelisting a cert thumbprint if a connection is reused
-        maxCachedSessions: options.acceptCertificate ? 0 : undefined,
-      },
-    }),
+    method: 'POST',
+    hostname: url.hostname,
+    protocol: url.protocol,
+    path: url.pathname,
+    agent: isHttps
+      ? new https.Agent({
+          // we turn off normal CA cert validation when we are whitelisting a single cert thumbprint
+          rejectUnauthorized: options.acceptCertificate ? false : true,
+          // needed to allow whitelisting a cert thumbprint if a connection is reused
+          maxCachedSessions: options.acceptCertificate ? 0 : undefined,
+        })
+      : undefined,
   };
 
-  console.log(`Sending package ${packageFile} to ${options.importServiceUrl}...`);
-  return new Promise<string>((resolve, reject) => {
-    new NativeDataFetcher()
-      .post<string>(options.importServiceUrl, formData, requestBaseOptions)
-      .then((response) => {
-        const body = response.data;
+  if (options.proxy) {
+    setProxy(reqOptions, options.proxy, options.importServiceUrl);
+  }
 
-        console.log(chalk.green(`Sitecore has accepted import task ${body}`));
-        resolve(body);
-      })
-      .catch((error: ResponseError) => {
-        console.error(chalk.red('Unexpected response from import service:'));
-        if (error.response) {
-          console.error(chalk.red(`Status message: ${error.response.statusText}`));
-          console.error(chalk.red(`Status: ${error.response.status}`));
-        } else {
-          console.error(chalk.red(error.message));
-        }
+  const req = client.request(reqOptions);
 
-        reject();
+  if (https) {
+    applyCertPinning(req, options);
+  }
+
+  attachFormDataHandlers(req, formData);
+
+  formData.pipe(req);
+
+  req.on('response', (res) => {
+    if (res.statusCode !== 200) {
+      let errorData = '';
+
+      res.on('data', (chunk) => {
+        errorData += chunk;
       });
-  }).then((taskName) => watchJobStatus(options, taskName));
+
+      res.on('end', () => {
+        console.error(
+          chalk.red(`Error while uploading package: ${res.statusCode} ${res.statusMessage}`)
+        );
+        console.error(chalk.red(errorData));
+        process.exit(1);
+      });
+
+      return;
+    }
+
+    let responseData = '';
+
+    res.on('error', (err) => {
+      console.error(chalk.red(`Response error when uploading package: ${err.message}`));
+      process.exit(1);
+    });
+
+    res.on('data', (chunk) => {
+      responseData += chunk;
+    });
+
+    res.on('end', () => {
+      const taskName = responseData;
+      console.log('we are in packageDeploy', responseData);
+
+      console.log(chalk.green(`Package uploaded. Import task name: ${taskName}`));
+
+      watchJobStatus(options, taskName);
+    });
+  });
+
+  req.on('error', (err) => {
+    console.error(chalk.red(`Error while uploading package: ${err.message}`));
+    process.exit(1);
+  });
 }
 
 /**
  * Creates valid proxy object
- * @param {string} [proxy] proxy url
+ * @param {RequestOptions} reqOptions
+ * @param {string} proxy proxy url
+ * @param {string} targetUrl target url
  */
-export function extractProxy(proxy?: string) {
-  if (!proxy) return undefined;
-
+export function setProxy(reqOptions: RequestOptions, proxy: string, targetUrl: string) {
   try {
     const proxyUrl = new URL(proxy);
 
-    return {
-      protocol: proxyUrl.protocol.slice(0, -1),
-      host: proxyUrl.hostname,
-      port: +proxyUrl.port,
-    };
+    reqOptions.hostname = proxyUrl.hostname;
+    reqOptions.port = proxyUrl.port || (proxyUrl.protocol === 'https:' ? '443' : '80');
+    reqOptions.protocol = proxyUrl.protocol;
+    reqOptions.path = targetUrl;
   } catch (error) {
     console.error(chalk.red(`Invalid proxy url provided ${proxy}`));
     process.exit(1);
@@ -383,22 +447,27 @@ export function extractProxy(proxy?: string) {
 }
 
 /**
- * Provides way to customize request adapter
- * @param {PackageDeployOptions} options
+ * Attach form data handlers to handle errors and close events
+ * @param {ClientRequest} req request object
+ * @param {FormData} formData FormData object
  */
-export function getHttpsTransport(options: PackageDeployOptions) {
-  return {
-    ...https,
-    request: (reqOptions: https.RequestOptions, callback: (res: IncomingMessage) => void) => {
-      const req = https.request(
-        {
-          ...reqOptions,
-        },
-        callback
-      );
-      applyCertPinning(req, options);
+export function attachFormDataHandlers(req: ClientRequest, formData: FormData) {
+  let ended = false;
+  let errored = false;
 
-      return req;
-    },
-  };
+  formData.on('end', () => {
+    ended = true;
+  });
+
+  formData.once('error', (err) => {
+    errored = true;
+    console.log('Error when uploading package:', err);
+    req.destroy(err);
+  });
+
+  formData.on('close', () => {
+    if (!ended && !errored) {
+      new Error('Request stream has been aborted');
+    }
+  });
 }
