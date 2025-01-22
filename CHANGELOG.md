@@ -11,10 +11,6 @@ Our versioning strategy is as follows:
 
 ## Unreleased
 
-### 🎉 New Features & Improvements
-
-* `[nextjs][sitecore-jss-nextjs]` Support for Component Library feature in XMCloud ([#1987](https://github.com/Sitecore/jss/pull/1987)[#2000](https://github.com/Sitecore/jss/pull/2000)[#2002](https://github.com/Sitecore/jss/pull/2002)[#2005](https://github.com/Sitecore/jss/pull/2005))
-
 ### 🐛 Bug Fixes
 
 * `[templates/nextjs-sxa]` Fixed font-awesome import issue in custom workspace configuration ([#1998](https://github.com/Sitecore/jss/pull/1998))
