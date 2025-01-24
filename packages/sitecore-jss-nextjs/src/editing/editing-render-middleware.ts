@@ -217,7 +217,10 @@ export class ChromesHandler extends RenderMiddlewareBase {
    * @param {NextApiRequest} req
    */
   private defaultResolveServerUrl = (req: NextApiRequest) => {
-    return `${process.env.VERCEL ? 'https' : 'http'}://${req.headers.host}`;
+    // use https for requests with auth but also support unsecured http rendering hosts
+    return `${req.headers.authorization || process.env.VERCEL ? 'https' : 'http'}://${
+      req.headers.host
+    }`;
   };
 
   private extractEditingData(req: NextApiRequest): EditingData {
