@@ -18,4 +18,4 @@ Editing router
 
 ## Defined in
 
-[sitecore-jss-proxy/src/middleware/healthcheck/index.ts:7](https://github.com/Sitecore/jss/blob/d160f1095278a16ea5872cd77afb8f20ec721b2a/packages/sitecore-jss-proxy/src/middleware/healthcheck/index.ts#L7)
+[sitecore-jss-proxy/src/middleware/healthcheck/index.ts:7](https://github.com/Sitecore/jss/blob/795da9a2f7e0b0616ce17b431c18f0bb0e6cda23/packages/sitecore-jss-proxy/src/middleware/healthcheck/index.ts#L7)
