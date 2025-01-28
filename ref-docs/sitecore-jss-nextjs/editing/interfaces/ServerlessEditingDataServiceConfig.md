@@ -28,7 +28,7 @@ EditingDataMiddleware
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-service.ts:121](https://github.com/Sitecore/jss/blob/795da9a2f7e0b0616ce17b431c18f0bb0e6cda23/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L121)
+[sitecore-jss-nextjs/src/editing/editing-data-service.ts:121](https://github.com/Sitecore/jss/blob/aada8f2ba5c16b0e3ec15bd9f2808f35e24c280f/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L121)
 
 ***
 
@@ -50,4 +50,4 @@ NativeDataFetcher
 
 #### Defined in
 
-[sitecore-jss-nextjs/src/editing/editing-data-service.ts:127](https://github.com/Sitecore/jss/blob/795da9a2f7e0b0616ce17b431c18f0bb0e6cda23/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L127)
+[sitecore-jss-nextjs/src/editing/editing-data-service.ts:127](https://github.com/Sitecore/jss/blob/aada8f2ba5c16b0e3ec15bd9f2808f35e24c280f/packages/sitecore-jss-nextjs/src/editing/editing-data-service.ts#L127)

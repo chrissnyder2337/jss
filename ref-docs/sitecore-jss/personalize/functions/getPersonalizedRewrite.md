@@ -25,4 +25,4 @@ the rewrite path
 
 ## Defined in
 
-[packages/sitecore-jss/src/personalize/utils.ts:15](https://github.com/Sitecore/jss/blob/795da9a2f7e0b0616ce17b431c18f0bb0e6cda23/packages/sitecore-jss/src/personalize/utils.ts#L15)
+[packages/sitecore-jss/src/personalize/utils.ts:15](https://github.com/Sitecore/jss/blob/aada8f2ba5c16b0e3ec15bd9f2808f35e24c280f/packages/sitecore-jss/src/personalize/utils.ts#L15)
