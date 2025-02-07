@@ -16,7 +16,7 @@ export type LinkProps = ReactLinkProps & {
    * @default /^\//g
    */
   internalLinkMatcher?: RegExp;
-  
+
   /**
    * Support next/link's prefetch prop.
    */
