@@ -29,4 +29,4 @@ Data fetcher resolver in order to provide custom data fetcher
 
 ## Defined in
 
-[packages/sitecore-jss/src/layout/rest-layout-service.ts:57](https://github.com/Sitecore/jss/blob/f1572afbfc8b17fc798c9a1c6949529e432bf0ed/packages/sitecore-jss/src/layout/rest-layout-service.ts#L57)
+[packages/sitecore-jss/src/layout/rest-layout-service.ts:57](https://github.com/Sitecore/jss/blob/85fd9b813b01a71614ef7fb536485926ec8242cf/packages/sitecore-jss/src/layout/rest-layout-service.ts#L57)
