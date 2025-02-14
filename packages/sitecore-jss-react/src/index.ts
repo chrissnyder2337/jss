@@ -78,7 +78,9 @@ export {
 } from './components/Image';
 export { RichText, RichTextProps, RichTextPropTypes, RichTextField } from './components/RichText';
 export { Text, TextField } from './components/Text';
-export { DateField, DateFieldProps } from './components/Date';
+// @deprecated - use Date, DateProps instead
+export { Date as DateField, DateProps as DateFieldProps } from './components/Date';
+export { Date, DateProps } from './components/Date';
 export {
   FEaaSComponent,
   FEaaSComponentProps,

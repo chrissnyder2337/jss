@@ -27,7 +27,7 @@ export interface DateProps extends EditableFieldProps {
   render?: (date: Date | null) => React.ReactNode;
 }
 
-export const DateField: React.FC<DateProps> = withFieldMetadata<DateProps>(
+export const Date: React.FC<DateProps> = withFieldMetadata<DateProps>(
   withEmptyFieldEditingComponent<DateProps>(
     ({ field, tag, editable = true, render, ...otherProps }) => {
       if (!field || (!field.editable && isFieldValueEmpty(field))) {
@@ -63,7 +63,7 @@ export const DateField: React.FC<DateProps> = withFieldMetadata<DateProps>(
   )
 );
 
-DateField.propTypes = {
+Date.propTypes = {
   field: PropTypes.shape({
     value: PropTypes.string,
     editable: PropTypes.string,

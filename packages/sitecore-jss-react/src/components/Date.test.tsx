@@ -2,17 +2,16 @@
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import React from 'react';
-import { DateField } from './Date';
-import { describe } from 'node:test';
+import { Date } from './Date';
 import { EMPTY_DATE_FIELD_VALUE } from '@sitecore-jss/sitecore-jss/layout';
 
-describe('<DateField />', () => {
+describe('<Date />', () => {
   it('should return null if no editable or value', () => {
     const p = {
       field: {},
     };
 
-    const c = shallow(<DateField {...p} />);
+    const c = shallow(<Date {...p} />);
     expect(c.html()).to.equal('');
   });
 
@@ -23,7 +22,7 @@ describe('<DateField />', () => {
       },
     };
 
-    const c = shallow(<DateField {...p} />);
+    const c = shallow(<Date {...p} />);
 
     expect(c.html()).equal('23-11-2001');
   });
@@ -37,7 +36,7 @@ describe('<DateField />', () => {
       render,
     };
 
-    const c = shallow(<DateField {...p} />);
+    const c = shallow(<Date {...p} />);
 
     expect(c.html()).equal('<p>Fri Nov 23 2001</p>');
   });
@@ -52,7 +51,7 @@ describe('<DateField />', () => {
       render,
     };
 
-    const c = shallow(<DateField {...p} />);
+    const c = shallow(<Date {...p} />);
 
     expect(c.html()).equal('<p></p>');
   });
@@ -65,7 +64,7 @@ describe('<DateField />', () => {
       tag: 'h3',
     };
 
-    const c = shallow(<DateField {...p} />);
+    const c = shallow(<Date {...p} />);
 
     expect(c.html()).equal('<h3>11-23-2001</h3>');
   });
@@ -78,7 +77,7 @@ describe('<DateField />', () => {
       editable: true,
     };
 
-    const c = shallow(<DateField {...p} />);
+    const c = shallow(<Date {...p} />);
 
     expect(c.html()).equal('<span><h1 class="super">11-23-2001</h1></span>');
   });
@@ -104,7 +103,7 @@ describe('<DateField />', () => {
         },
       };
 
-      const rendered = mount(<DateField {...props} />);
+      const rendered = mount(<Date {...props} />);
 
       expect(rendered.html()).to.equal(
         [
@@ -125,7 +124,7 @@ describe('<DateField />', () => {
             metadata: testMetadata,
           };
 
-          const rendered = mount(<DateField field={field} />);
+          const rendered = mount(<Date field={field} />);
 
           expect(rendered.html()).to.equal(
             [
@@ -144,7 +143,7 @@ describe('<DateField />', () => {
             metadata: testMetadata,
           };
 
-          const rendered = mount(<DateField field={field} />);
+          const rendered = mount(<Date field={field} />);
 
           expect(rendered.html()).to.equal(
             [
@@ -170,7 +169,7 @@ describe('<DateField />', () => {
           );
 
           const rendered = mount(
-            <DateField field={field} emptyFieldEditingComponent={EmptyFieldEditingComponent} />
+            <Date field={field} emptyFieldEditingComponent={EmptyFieldEditingComponent} />
           );
 
           expect(rendered.html()).to.equal(
@@ -195,7 +194,7 @@ describe('<DateField />', () => {
           );
 
           const rendered = mount(
-            <DateField field={field} emptyFieldEditingComponent={EmptyFieldEditingComponent} />
+            <Date field={field} emptyFieldEditingComponent={EmptyFieldEditingComponent} />
           );
 
           expect(rendered.html()).to.equal(
@@ -217,7 +216,7 @@ describe('<DateField />', () => {
         metadata: testMetadata,
       };
 
-      const rendered = mount(<DateField field={field} editable={false} />);
+      const rendered = mount(<Date field={field} editable={false} />);
 
       expect(rendered.html()).to.equal('');
     });
