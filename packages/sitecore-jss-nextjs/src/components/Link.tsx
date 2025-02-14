@@ -17,11 +17,16 @@ export type LinkProps = ReactLinkProps & {
   internalLinkMatcher?: RegExp;
 };
 
+/**
+ * Matches relative URLs that end with a file extension.
+ */
+const FILE_EXTENSION_MATCHER = /^\/.*\.\w+$/;
+
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (props: LinkProps, ref): JSX.Element | null => {
     const {
       field,
-      editable,
+      editable = true,
       children,
       internalLinkMatcher = /^\//g,
       showLinkTextWithChildrenPresent,
@@ -30,7 +35,10 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 
     if (
       !field ||
-      (!(field as LinkFieldValue).editable && !field.value && !(field as LinkFieldValue).href)
+      (!(field as LinkFieldValue).editable &&
+        !field.value &&
+        !(field as LinkFieldValue).href &&
+        !field.metadata)
     ) {
       return null;
     }
@@ -38,14 +46,20 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     const value = ((field as LinkFieldValue).href
       ? field
       : (field as LinkField).value) as LinkFieldValue;
-    const { href, querystring, anchor } = value;
-    const isEditing = editable && (field as LinkFieldValue).editable;
+    // fallback to {} if value is undefined; could happen if field is LinkFieldValue, href is empty in metadata mode
+    const { href, querystring, anchor } = value || {};
+
+    const isEditing =
+      editable && ((field as LinkFieldValue).editable || (field as LinkFieldValue).metadata);
 
     if (href && !isEditing) {
       const text = showLinkTextWithChildrenPresent || !children ? value.text || value.href : null;
 
-      // determine if a link is a route or not.
-      if (internalLinkMatcher.test(href)) {
+      const isMatching = internalLinkMatcher.test(href);
+      const isFileUrl = FILE_EXTENSION_MATCHER.test(href);
+
+      // determine if a link is a route or not. File extensions are not routes and should not be pre-fetched.
+      if (isMatching && !isFileUrl) {
         return (
           <NextLink
             href={{ pathname: href, query: querystring, hash: anchor }}
@@ -71,10 +85,6 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     return <ReactLink {...reactLinkProps} ref={ref} />;
   }
 );
-
-Link.defaultProps = {
-  editable: true,
-};
 
 Link.displayName = 'NextLink';
 
